@@ -8,7 +8,8 @@
     "morgan": "^1.8.1",
     "react": "15.0.2",
     "react-dom": "15.0.2",
-    "react-router": "2.4.0"
+    "react-router": "2.4.0",
+    "foundation-sites": "5.5.2"
   },
   "devDependencies": {
     "react-scripts": "0.9.5"
