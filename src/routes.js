@@ -1,16 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Router, Route} from 'react-router';
 
-import App from './components/App';
-import About from './components/About';
+ import CircleHome from './components/CircleHome';
 import NotFound from './components/NotFound';
+import SignUp from './components/SignUp';
 
 const Routes = (props) => (
     <Router {...props}>
-        <Route path="/" component = {App}></Route>
-        <Route path="about" component = {About}></Route>
-        <Route path="*" component = {NotFound}></Route>
-
+        <Route path="/" component={SignUp}></Route>
+        <Route path="/circle" component={CircleHome}></Route>
+        <Route path="*" component={NotFound}></Route>
     </Router>
 );
 
