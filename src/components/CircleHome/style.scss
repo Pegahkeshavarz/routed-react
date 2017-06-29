@@ -24,6 +24,17 @@
     outline:none;
 }
 
+.profile-img{
+    width: 42px;
+	height: 42px;
+    border-radius: 100px;
+    margin:{
+        right:10px;
+        top: 5px;
+        bottom: 8px;
+    }
+}
+
 .profile-btn-sign,
 .profile-btn-sign:hover,
 .profile-btn-sign:focus
@@ -75,12 +86,21 @@
 }
 
 .cir-names{
-    margin-top: 30px;
+    margin:{
+        top: 30px;
+        left:25px;
+    }
+
+}
+
+.title{
+    font-size: 16px;
+	color: #4a4a4a;
 }
 
 .cir-nav-img{
-    width: 125px;
-	height: 125px;
+    width: 100px;
+	height: 100px;
     border-radius: 100px;
 }
 
@@ -122,8 +142,10 @@
 .chat-container{
     flex-direction: column;
     overflow-y: scroll;
+    overflow-x: hidden;
     height:66%;
     background-color: transparent;
+    padding-bottom: 38px;
 }
 
 .msg p{
@@ -132,18 +154,37 @@
 	color: rgba(0, 0, 0, 0.5);
 }
 
-.send-container{
-    width:93%;
+.hover-time-container{
+    background-color: #4a4a4a;
+	box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.5);
+    color: #fff;
+    background-color: #4a4a4a;
+    box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.5);
+    color: #fff;
+    padding: 4px 30px;
+    height: 35.8px;;
     position: absolute;
-    margin:0 20px;
+    top: 49px;
+    left: 33px;
+    border-radius: 3px;
+}
+
+.send-container{
+    position: absolute;
+    width:100%;
+    flex-direction: row;
+    bottom:112px;
+    display: flex;
+    background-color:#fff;
+}
+
+.main-send-container{
     display: flex;
     flex: 1;
-    flex-direction: row;
-    bottom:109px;
-    display: flex;
+    width:93%;
+    margin:10px 20px 0;
     border-radius: 7px;
 	border: solid 1px #e7ddff;
-    background-color:#fff;
 }
 
 .input-chat{
@@ -191,8 +232,8 @@ input[type="file"] {
     width: 33px;
     margin: 0 auto;
     position: absolute;
-    top: 11px;
-    left: 11px;
+    top: 22px;
+    left: 32px;
 }
 
 
@@ -205,6 +246,74 @@ input[type="file"] {
 .user-photo{
     width: 40px;
 	height: 40px;
+    border-radius: 100px;
+}
+
+.msgOptions-container {
+    position: absolute;
+    top: 45px;
+}
+
+.main-cur-container {
+    position: relative;
+}
+
+.cur-username {
+    font-size: 13px;
+    letter-spacing: -0.4px;
+    text-align: right;
+    color: rgba(0, 0, 0, 0.2);
+    display: block;
+    margin-top:7px;
+
+}
+
+.cur-msg {
+    position: relative;
+    padding: 13px 31px 0px;
+    border-radius: 22px;
+    background-color: #f3f4f7;
+    margin:{
+        left: 124px;
+        bottom: 20px;
+        right: 1px;
+    }
+
+}
+
+.cur-msg-container{
+    float: right;
+    margin:12px 17px;
+    display: flex;
+    position: relative;
+}
+
+.cur-user{
+    text-align: right;
+    width:43%;
+}
+
+.dl-btn,
+.dl-btn:focus,
+.dl-btn:hover {
+    background: transparent;
+    padding: 0 16px;
+}
+
+.tions-container{
+    position: absolute;
+    right: 199px;
+    top: 617px;
+}
+
+.dl-btn img{
+    width: 16px;
+	height: 19px;
+}
+
+img.cur-user-photo {
+    width: 42.6px;
+    height: 42.7px;
     border-radius: 100px;
 }
 
@@ -276,7 +385,7 @@ input[type="file"] {
     display: flex;
     text-align: right;
     float: right;
-    margin-bottom:10px;
+    margin-bottom:-1px;
 }
 
 .lower-nav{
@@ -290,7 +399,10 @@ input[type="file"] {
     font-size: 12.5px;
 	letter-spacing: -0.5px;
 	color: #4a4a4a;
-    margin-bottom: 0;
+    margin:{
+        top:6px;
+        bottom: 0;
+    }
 }
 
 .top-img{
@@ -319,10 +431,21 @@ input[type="file"] {
 
 .leave-cir-container {
     position: absolute;
-    top: 108px;
-    left: -12px;
+    top: 42px;
+    left: -51px;
     width: 150px;
     height: 42.2px;
+    z-index:1000;
+}
+
+.close-btn,
+.close-btn:hover,
+.close-btn:focus
+ {
+    font-size: 20px;
+    letter-spacing: -0.5px;
+    color: #4a4a4a;
+    background: transparent;
 }
 
 .arrow-up{
@@ -330,10 +453,10 @@ input[type="file"] {
       height: 0;
       border-left: 14px solid transparent;
       border-right: 15px solid transparent;
-      border-bottom: 11px solid #fff;
+      border-bottom: 11px solid #4a4a4a;
       position: absolute;
       top: -11px;
-      left: 98px;
+      left: 75px;
 }
 
 .leave-cir-text{

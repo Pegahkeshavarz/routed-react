@@ -8,8 +8,8 @@ import SignUp from './components/SignUp';
 const Routes = (props) => (
     <Router {...props}>
         <Route path="/" component={SignUp}></Route>
-        <Route path="/circle" component={CircleHome}></Route>
-        <Route path="*" component={NotFound}></Route>
+        <Route path="/:groupId" component={CircleHome}></Route>
+
     </Router>
 );
 

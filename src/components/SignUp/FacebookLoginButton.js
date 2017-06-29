@@ -2,9 +2,11 @@
 
 import React, {Component, PropTypes} from 'react';
 import loaders from './social-loaders';
+import * as userActions from '../../redux/actions/userActions';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 import Spinner from 'halogen/ClipLoader';
 import './style.css';
-import Api from '../../core/Api';
 import ApiHandler from '../../core/ApiHandler';
 
 
@@ -51,27 +53,20 @@ class FacebookLoginButton extends Component {
       console.log(err);
     }
 
-    loginUser(userData) {
-        debugger
-        let ping = ApiHandler.customApiHeader(userData);
+    loginUser(fbUserData) {
 
-          Api.post('/UserService/logInWithFacebook', ping).then(apiResponse => {
-                console.log(apiResponse.data.result.userProfile);
-                  this.setState({userProfile: apiResponse.data.result.userProfile});
+        let ping = ApiHandler.customApiHeader(fbUserData);
 
-                    setTimeout(() => {
-                       this.props.onCloseFacebook(true, this.state.userProfile);
-                   }, 2000);
+        this.props.actions.login(ping).then( response => {
+            console.log(response);
+              setTimeout(() => {
+                 this.props.onCloseFacebook(true);
+             }, 1000);
+      }).catch(error => {
+        const errorMessage = ApiHandler.getErrorMessage(error);
+        console.log(errorMessage);
+     });
 
-
-          }).catch(error => {
-
-              const errorMessage = ApiHandler.getErrorMessage(error);
-              alert(errorMessage);
-          });
-
-
-      console.log(userData);
 
     }
 
@@ -128,5 +123,18 @@ FacebookLoginButton.contextTypes = {
  router: PropTypes.object
 }
 
+function mapStateToProps(state, ownProps) {
 
-export default FacebookLoginButton;
+  return {
+      currentUser: state.user.currentUser
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+      actions: bindActionCreators(userActions, dispatch)
+  }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(FacebookLoginButton);

@@ -14,7 +14,7 @@ import moment from 'moment';
 import Modal from 'react-modal';
 
 
-class CircleHome extends Component {
+class ChatComponent extends Component {
 
   constructor(props){
     super(props);
@@ -651,7 +651,7 @@ componentWillReceiveProps(nextProps) {
   }
 }
 
-CircleHome.contextTypes = {
+ChatComponent.contextTypes = {
  router: PropTypes.object
 }
 
@@ -673,4 +673,4 @@ function mapDispatchToProps(dispatch) {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(CircleHome);
+export default connect(mapStateToProps, mapDispatchToProps)(ChatComponent);

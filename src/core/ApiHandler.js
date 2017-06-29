@@ -18,7 +18,7 @@ let ApiHandler = (function () {
       .substring(1);
   }
 
-  //function to create uuid 
+  //function to create uuid
   let guid = function() {
     return randomUUID() + randomUUID() + '-' + randomUUID() + '-' + randomUUID() + '-' +
       randomUUID() + '-' + randomUUID() + randomUUID() + randomUUID();

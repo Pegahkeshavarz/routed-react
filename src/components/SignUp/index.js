@@ -1,10 +1,10 @@
 
 
-import React, { Component, PropTypes } from 'react';
-
+import React, { Component,PropTypes} from 'react';
+import {connect} from 'react-redux';
 import FacebookLoginButton from './FacebookLoginButton';
 import './style.css';
-import Api from '../../core/Api';
+
 import ApiHandler from '../../core/ApiHandler';
 
 
@@ -19,7 +19,7 @@ class SignUp extends Component {
         lastName:'',
         email:''
       },
-      userProfile:{}
+      currentUser:{}
     }
 
     this.handleSocialLogin= this.handleSocialLogin.bind(this);
@@ -37,12 +37,18 @@ class SignUp extends Component {
 
   }
 
-  onCloseFacebook(res, userProfile){
+  //Called any time the Props have Changed in the Redux Store
+  componentWillReceiveProps(nextProps) {
+      //Check if the Props for Services have in fact changed.
+      if (this.props.currentUser !== nextProps.currentUser) {
+          this.setState({currentUser: nextProps.currentUser });
+      }
+  }
+
+  onCloseFacebook(res){
     if(res){
       this.setState({visibleRSVP: true});
     }
-
-    this.setState({userProfile});
 
   }
 
@@ -52,17 +58,13 @@ class SignUp extends Component {
 
   onChangeInput(e){
     e.preventDefault();
-
     let user = this.state.user;
-
     user[e.target.name] = this.target.value;
-
     this.setState({user});
   }
 
   onclickRequest(){
-    console.log('here');
-    this.context.router.push('/circle');
+    this.context.router.push('/0424D3CD-7DF1-4EC8-B6FA-CD79C60FB827');
   }
 
   render() {
@@ -108,7 +110,7 @@ class SignUp extends Component {
                 <input
                   maxLength={5}
                   name="firstName"
-                  value={this.state.userProfile.name.first ? this.state.userProfile.name.first : this.state.user.firstName}
+                  value={this.state.currentUser.name.first ? this.state.currentUser.name.first : this.state.user.firstName}
                   type="text"
                   onChange={this.onChangeInput}
                   className="input-form" />
@@ -118,7 +120,7 @@ class SignUp extends Component {
               <label>
                 <input
                   name="lastName"
-                  value={this.state.user.lastName}
+                  value={this.state.currentUser.name.last ? this.state.currentUser.name.last :this.state.user.lastName}
                   type="text"
                   onChange={this.onChangeInput}
                   className="input-form" />
@@ -160,6 +162,18 @@ SignUp.contextTypes = {
  router: PropTypes.object
 }
 
+function mapStateToProps(state, ownProps) {
+
+    return {
+        currentUser: state.user.currentUser
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+    }
+}
 
 
-export default SignUp;
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
